@@ -3,6 +3,8 @@ var sleep = require('sleep');
 
 var pipe_exist = false;
 
+// Named Pipeが作成されていない場合、named-pipes.connectはハンドル不可の
+// エラーを起こすので、fs.openSyncで事前にチェックする
 for (var i = 0; i < 60 && !pipe_exist; i++) {
 	try {
 		var fd = fs.openSync('\\\\.\\pipe\\our-pipe-name', 'r+');
@@ -20,7 +22,6 @@ if (!pipe_exist) {
 }
 
 var readLine = require('readline');
-var async = require('async');
 var pipe = require('named-pipes').connect('our-pipe-name');
 
 console.log("type 'exit' to end");
@@ -41,12 +42,10 @@ var reader = readLine.createInterface({
 reader.on('line', function (line) {
 	pipe.send('message', line);
 	if (line == 'exit') {
-		async.series([
-			function(callback) {
-				setTimeout(function() {
-					process.exit(0);
-				}, 100);
-			},
-		]);
+		// 直ぐにprocess.exitを呼び出すと、相手にメッセージが送信されない
+		// ので、タイマーを仕掛ける
+		setTimeout(function() {
+			process.exit(0);
+		}, 100);
 	}
 });

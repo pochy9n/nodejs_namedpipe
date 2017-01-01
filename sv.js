@@ -1,5 +1,4 @@
 var readLine = require('readline');
-var async = require('async');
 
 var server = require('named-pipes').listen('our-pipe-name');
 
@@ -22,13 +21,11 @@ server.on('connect', function(client) {
 	reader.on('line', function (line) {
 		client.send('message', line);
 		if (line == 'exit') {
-			async.series([
-				function(callback) {
-					setTimeout(function() {
-						process.exit(0);
-					}, 100);
-				},
-			]);
+			// 直ぐにprocess.exitを呼び出すと、相手にメッセージが送信され
+			// ないので、タイマーを仕掛ける
+			setTimeout(function() {
+				process.exit(0);
+			}, 100);
 		}
 	});
 });

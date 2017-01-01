@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/pochy9n/nodejs_namedpipe#readme",
   "dependencies": {
-    "async": "^2.1.4",
     "named-pipes": "0.0.1",
     "sleep": "^5.0.0"
   }
