@@ -6,7 +6,7 @@ Server/Client application with Windows Named Pipe
 
 ## ビルド方法
 package.jsonに記載の通り、sleepモジュールを使用しています。
-このsleepモジュールにはネイティブコードが含まれているため、windows-build-toolsなどのネイティブコードビルド環境が必要ですので、npm installを事項する前に用意してください。
+このsleepモジュールにはネイティブコードが含まれているため、windows-build-toolsなどのネイティブコードビルド環境が必要ですので、npm installを実行する前に用意してください。
 
 ## 使用方法
 コマンドプロンプトでrun.batを実行すると、サーバーを別のコマンドプロンプトで起動し、クライアントは現在のコマンドプロンプトで起動します。
