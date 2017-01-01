@@ -1,0 +1,24 @@
+{
+  "name": "nodejs_namedpipe",
+  "version": "1.0.0",
+  "description": "Server/Client application with Windows Named Pipe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pochy9n/nodejs_namedpipe.git"
+  },
+  "author": "pochy9n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pochy9n/nodejs_namedpipe/issues"
+  },
+  "homepage": "https://github.com/pochy9n/nodejs_namedpipe#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "named-pipes": "0.0.1",
+    "sleep": "^5.0.0"
+  }
+}
